@@ -16,20 +16,79 @@ distinto, y sin este archivo no se distinguen.
 - Incluye también los que **no funcionaron**. Suelen ser los más útiles de leer.
 - `Modelo` y `Herramienta` en todos. Si cambiaste de una a otra a mitad, se nota aquí.
 
-Borra el ejemplo de abajo cuando escribas el primero.
-
 ---
 
 ## Prompt 1
 
-**Modelo:** Opus 1M xHigh
+**Modelo:** Claude Opus 5.5
 **Herramienta:** Claude Code
 
 ```
-Este es el ejemplo. Bórralo.
-
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
+Lee el requisito «Lo que cada tarea muestra de su responsable» en openspec/specs/tasks/spec.md.
+Identifica los scenarios que pertenecen a este requisito y, para cada uno, busca en las pruebas existentes qué test podría cubrirlo.
+No escribas ni modifiques ningún archivo.
+No crees nuevos tests.
+No supongas que un scenario está cubierto solo porque encuentres un test con un nombre parecido: revisa el contenido del test y explica qué comportamiento verifica.
+Para cada scenario, indícame:
+El nombre del scenario.
+El test que consideras relacionado, indicando su ruta y nombre exacto.
+Si consideras que está Covered, Not covered o Don’t know.
+La evidencia concreta del test que te llevó a esa conclusión.
+Si no encuentras un test relacionado, indícalo explícitamente.
+Limítate a revisar el requisito y las pruebas existentes. No propongas cambios todavía.
 ```
 
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+**Qué salió:** los tres scenarios salieron «Not covered». Fallaron los comandos de shell, así que los ficheros de test se encontraron adivinando sus nombres.
+
+## Prompt 2
+
+**Modelo:** Claude Opus 5.5
+**Herramienta:** Claude Code
+
+```
+Con lo que encuentres, crea docs/verificacion/ss.md con la matriz (una fila por scenario, cuatro columnas). Para marcar "Cubierto", abre el test y lee qué comprueba.
+```
+
+**Qué salió:** creó la matriz. Esta vez sí se pudieron listar los tests y se confirmó que no había ninguno de `tasks`.
+
+## Prompt 3
+
+**Modelo:** Claude Opus 5.5
+**Herramienta:** Claude Code
+
+```
+Para cada fila "No cubierto", pide un test en backend/tests/functional/tasks/ y ejecútalo. Si sale rojo, déjalo en rojo.
+```
+
+**Qué salió:** creó `backend/tests/functional/tasks/assignee.spec.ts`. Pasan 2 tests y falla 1: la lista expone el email del responsable.
+
+## Prompt 4
+
+**Modelo:** Claude Opus 5.5
+**Herramienta:** Claude Code
+
+```
+Debajo de la matriz, en el mismo ss.md, escribe las tres líneas: tu estimación frente al resultado real, el scenario en el que dudaste, y lo que tuviste que decidir tú al escribir el test.
+```
+
+**Qué salió:** añadió los tres párrafos debajo de la matriz.
+
+## Prompt 5
+
+**Modelo:** Claude Opus 5.5
+**Herramienta:** Claude Code
+
+```
+puedes escribir las propmpts por favor, primero indicame donde las vas a escribir antes de hacerlo
+```
+
+## Prompt 6
+
+**Modelo:** Claude Opus 5.5
+**Herramienta:** Claude Code
+
+```
+escribelas en el archivo: prompts.md
+```
+
+**Qué salió:** rellenó este archivo.
