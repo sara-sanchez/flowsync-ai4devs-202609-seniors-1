@@ -85,3 +85,14 @@ La regla que eliminaría y por qué: Eliminaría la regla 5 de las reglas de pro
 ```
 añade también los prompts usados en la auditoría, en el archivo de prompts
 ```
+
+**Qué salió:** sustituyó el ejemplo de la plantilla por los prompts 1–4.
+
+## Prompt 5
+
+**Modelo:** Claude Opus 5.5
+**Herramienta:** Claude Code
+
+```
+sí, añade la tabla al archivo de auditoría
+```
