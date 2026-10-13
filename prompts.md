@@ -96,3 +96,14 @@ añade también los prompts usados en la auditoría, en el archivo de prompts
 ```
 sí, añade la tabla al archivo de auditoría
 ```
+
+**Qué salió:** añadió la tabla encima de las tres líneas en `docs/auditoria/ss.md`.
+
+## Prompt 6
+
+**Modelo:** Claude Opus 5.5
+**Herramienta:** Claude Code
+
+```
+sí, haz push y abre el PR
+```
